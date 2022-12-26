@@ -8,7 +8,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/po3rin/smartcircle"
+	"github.com/s3f4/smartcircle"
 )
 
 var imgPath = flag.String("f", "", "path to the image")
@@ -36,7 +36,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	result, err := c.CropCircle()
+	result, err := c.CropCircle(0)
 	if err != nil {
 		log.Fatal(err)
 	}

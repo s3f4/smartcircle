@@ -1,5 +1,7 @@
 # smartcircle
 
+copy of github.com/po3rin/smartcircle
+
 <img src="https://img.shields.io/badge/go-v1.11-blue.svg"/>
 
 Automatically determine where to crop a circular image out of a rectangular.

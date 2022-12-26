@@ -12,7 +12,7 @@ import (
 
 // Cropper for crop circle.
 type Cropper interface {
-	CropCircle() (*image.RGBA, error)
+	CropCircle(add int) (*image.RGBA, error)
 	setSrc(src image.Image) error
 }
 
@@ -60,9 +60,9 @@ func (c *cropper) setSrc(src image.Image) error {
 }
 
 // CropCircle crop a circle image out of image.
-func (c *cropper) CropCircle() (*image.RGBA, error) {
+func (c *cropper) CropCircle(add int) (*image.RGBA, error) {
 	analyzer := smartcrop.NewAnalyzer(nfnt.NewDefaultResizer())
-	topCrop, err := analyzer.FindBestCrop(c.src, 2*c.radius, 2*c.radius)
+	topCrop, err := analyzer.FindBestCrop(c.src, 2*c.radius+add, 2*c.radius+add)
 	if err != nil {
 		return nil, errors.Wrap(err, "smartcircle: failed to smart crop")
 	}
@@ -74,7 +74,7 @@ func (c *cropper) CropCircle() (*image.RGBA, error) {
 	mask := &circle{p: image.Point{c.radius, c.radius}, r: c.radius}
 
 	// prepare dst for draw
-	rect := image.Rect(0, 0, c.radius*2, c.radius*2)
+	rect := image.Rect(0, 0, c.radius*2+add, c.radius*2+add)
 	dst := image.NewRGBA(rect)
 	fillRect(dst, color.RGBA{0, 0, 0, 0})
 

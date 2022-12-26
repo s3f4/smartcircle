@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/po3rin/smartcircle"
+	"github.com/s3f4/smartcircle"
 )
 
 var genGoldenFiles = flag.Bool("gen_golden_files", false, "whether to generate the TestXxx golden files.")
@@ -70,7 +70,7 @@ func TestCropCircle(t *testing.T) {
 			t.Fatalf("not expected error: %v", err.Error())
 		}
 
-		got, err := cropper.CropCircle()
+		got, err := cropper.CropCircle(0)
 		if err != nil {
 			t.Fatalf("not expected error: %v", err.Error())
 		}

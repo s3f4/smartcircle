@@ -1,4 +1,4 @@
-module github.com/po3rin/smartcircle
+module github.com/s3f4/smartcircle
 
 go 1.12
 
