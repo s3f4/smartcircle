@@ -71,7 +71,7 @@ func (c *cropper) CropCircle(add int) (*image.RGBA, error) {
 	src := c.src.(SubImager).SubImage(topCrop)
 
 	// prepare src for mask
-	mask := &circle{p: image.Point{c.radius, c.radius}, r: c.radius}
+	mask := &circle{p: image.Point{c.radius, c.radius}, r: c.radius + add}
 
 	// prepare dst for draw
 	rect := image.Rect(0, 0, c.radius*2+add, c.radius*2+add)
